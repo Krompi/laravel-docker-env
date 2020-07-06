@@ -1,0 +1,68 @@
+version: "3.7"
+networks:
+  default:
+    external:
+      name: proxy
+  intern: {}
+services:
+  app:
+    build:
+      args:
+        user: www-run
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: travellist
+    # container_name: travellist-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./www:/var/www
+    networks:
+      default: {}
+      intern:
+        aliases:
+          - app
+
+  db:
+    image: mysql:5.7
+    # container_name: travellist-db
+    restart: unless-stopped
+    # env_file: 
+    #   # - .env
+    #   - ./www/.env1
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      default: {}
+      intern:
+        aliases:
+          - db
+
+  www:
+    image: nginx:alpine
+    # container_name: travellist-nginx
+    restart: unless-stopped
+    # ports:
+    #   - 8000:80
+    volumes:
+      - ./www:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      default: {}
+      intern:
+        aliases:
+          - www
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.priority: "50"
+      traefik.port: "80"
+      traefik.frontend.rule: "HostRegexp: laravel.{domain:.+}"
+      traefik.docker.network: "proxy"
