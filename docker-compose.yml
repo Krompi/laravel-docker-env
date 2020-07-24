@@ -12,7 +12,7 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: laravel-loc
+    image: laravel-app
     # container_name: travellist-app
     restart: unless-stopped
     working_dir: /var/www/
@@ -66,7 +66,7 @@ services:
       traefik.port: "80"
       traefik.frontend.rule: "HostRegexp: laravel.{domain:.+}"
       traefik.docker.network: "proxy"
-  bvv-inter-adminer:
+  adminer:
     image: adminer
     labels:
         traefik.enable: "true"

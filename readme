@@ -55,4 +55,18 @@ Keine Ahnung, ob man das braucht...!
 
 ### Episode 15 - Site Template
 
-### Episode 15 - Set active menu link
+### Episode 16 - Set active menu link
+
+### Episode 17 - asset compilation
+Laravel hat von Haus aus Preprozessoren an Bord.
+Die Config befindet sich in der Datei webpack.mix.js.
+
+    cd www
+    // module installieren
+    npm install
+    // einmalig auslösen
+    npm run dev
+    // watch starten
+    npm run watch
+
+mehr Infos: https://laravel.com/docs/7.x/mix
