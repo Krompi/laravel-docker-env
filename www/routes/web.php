@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return $name;
-    return view('test', [
-        'name' => request('name')
-    ]);
+Route::get('/posts/{post}', function ($post) {
+    $posts = [
+        'my-first-post' => 'sadfasdf',
+        'my-second-post' => 'yxcv'
+    ];
 
+    if ( !array_key_exists($post, $posts) ) {
+        abort(404, 'Sorry, that Post was not found.');
+    }
+
+    return view('post', [
+        'post' => $posts[$post]
+    ]);
 });
