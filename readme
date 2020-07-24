@@ -6,3 +6,13 @@ https://www.digitalocean.com/community/tutorials/how-to-containerize-a-laravel-a
 ## Laracast
 https://laracasts.com/series/laravel-6-from-scratch
 
+### Episoode 8
+Konsolen-Befehl, um einen neuen Controller anzulegen
+
+    sudo docker exec lara-test_app_1 php artisan make:controller PostsController
+
+Dieser wird dann unter app/Http/Controllers angelegt
+
+### Episoode 9
+Alle Variablen in der .env-File können verwendete werden, z.B in der config/database.php
+

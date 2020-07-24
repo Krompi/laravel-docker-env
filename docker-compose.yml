@@ -12,7 +12,7 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: travellist
+    image: laravel-loc
     # container_name: travellist-app
     restart: unless-stopped
     working_dir: /var/www/
@@ -28,8 +28,8 @@ services:
     image: mysql:5.7
     # container_name: travellist-db
     restart: unless-stopped
-    # env_file: 
-    #   # - .env
+    env_file: 
+       - .env
     #   - ./www/.env1
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -66,3 +66,19 @@ services:
       traefik.port: "80"
       traefik.frontend.rule: "HostRegexp: laravel.{domain:.+}"
       traefik.docker.network: "proxy"
+  bvv-inter-adminer:
+    image: adminer
+    labels:
+        traefik.enable: "true"
+        traefik.frontend.priority: "50"
+        traefik.frontend.rule: "HostRegexp: laravel-adminer.{domain:.+}"
+        traefik.backend: "adminer"
+        traefik.docker.network: "proxy"
+        traefik.port: "8080"
+    networks:
+      default: {}
+      intern:
+        aliases:
+          - adminer
+    depends_on:
+      - db
