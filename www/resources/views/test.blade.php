@@ -15,7 +15,11 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1>test</h1>
+
+        <!-- {{}} ersetzt htmlspecialvars -->
+        <h1>{{ $name }}</h1>
+        <!-- {!! !!} gibt die Variable aus wie sie kommt, z.B. aus Datenbank -->
+        <h1>{!! $name !!}</h1>
         
         <script src="" async defer></script>
     </body>
