@@ -16,3 +16,38 @@ Dieser wird dann unter app/Http/Controllers angelegt
 ### Episoode 9
 Alle Variablen in der .env-File können verwendete werden, z.B in der config/database.php
 
+### Episode 10
+    sudo docker exec lara-tutorial_app_1 php artisan make:model posts
+Erzeugt ein Model für den Datenbank-Zugriff
+
+    sudo docker exec lara-tutorial_app_1 php artisan make:migration create_posts_table
+Erzeugt ein Skript zum Anlegen von Datenbank-Elementen
+
+    sudo docker exec lara-tutorial_app_1 php artisan migrate
+Führt die Migrations-Skripte aus
+
+### Episode 11
+     sudo docker exec lara-tutorial_app_1 php artisan make:model Assignment -mc
+Erzeugt ein neues Model und zusätzlich noch eine Migration und einen Controller (-mc)
+
+Das Migrationsskript wird angepaßt und mit 
+
+    sudo docker exec lara-tutorial_app_1 php artisan migrate
+wird die Änderung angewandt.
+
+#### Tinker
+Tinker ist eine Spielwiese für PHP-Befehle. Alles was man in Skripten ausführt kann man auch mit Tinker ausführen.
+in dem Beispiel unten wird beispielsweise ein DB-Eintrag gemacht.
+
+    sudo docker exec -it lara-tutorial_app_1 bash
+    www-run@bc6dc00ccfd0:/var/www$ php artisan tinker
+    Psy Shell v0.10.4 (PHP 7.4.7 — cli) by Justin Hileman
+    >>> $assignment = new App\Assignment;
+    => App\Assignment {#3042}
+    >>> $assignment->body = 'Finish school work!';
+    => "Finish school work!"
+    >>> $assignment->save();
+    => true
+
+Keine Ahnung, ob man das braucht...!
+
