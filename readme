@@ -9,7 +9,7 @@ https://laracasts.com/series/laravel-6-from-scratch
 ### Episoode 8
 Konsolen-Befehl, um einen neuen Controller anzulegen
 
-    sudo docker exec lara-test_app_1 php artisan make:controller PostsController
+    sudo docker exec lara-tutorial_app_1 php artisan make:controller PostsController
 
 Dieser wird dann unter app/Http/Controllers angelegt
 
