@@ -71,7 +71,7 @@ Die Config befindet sich in der Datei webpack.mix.js.
 
 mehr Infos: https://laravel.com/docs/7.x/mix
 
-### Episode 18 - Render Dynamic Data
+### Episode 18/19 - Render Dynamic Data
 Es wird zuerst eine Model-File erzeugt, inklusiver einer Migrations-Datei
 
     sudo docker exec lara-tutorial_app_1 php artisan make:model Article -m
@@ -103,3 +103,12 @@ Mit Tinker kann man jetzt Daten hinzufügen
     => true
 
 Alternativ kann man es natürlich mit adminer machen....
+
+Die Artikel werden in der Routers-Datei (web.php) geholt und in der Blade-Datei (about.blade.php) ausgegeben
+
+Um die Artikel anzuzeigen wird in der Routers ein neuer Controller aufgerufen und dieser wird mit Artisan erzeugt:
+
+    sudo docker exec lara-tutorial_app_1 php artisan make:controller ArticlesController
+
+Die Ausgabe erfolgt in einer neuen Blade-Datei.
+
