@@ -71,7 +71,7 @@ Die Config befindet sich in der Datei webpack.mix.js.
 
 mehr Infos: https://laravel.com/docs/7.x/mix
 
-### Episode 18/19 - Render Dynamic Data
+### Episode 18/19/20 - Render Dynamic Data
 Es wird zuerst eine Model-File erzeugt, inklusiver einer Migrations-Datei
 
     sudo docker exec lara-tutorial_app_1 php artisan make:model Article -m
