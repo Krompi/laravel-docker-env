@@ -1,5 +1,6 @@
 <?php
 
+use App\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,29 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('about');
+
+    // // alle Artikel holen
+    // $articles = App\Article::all();
+
+    // // hole nur zwei Artikel
+    // $articles = App\Article::take(2)->get();
+
+    // // Seitenumschalter bauen
+    // $articles = App\Article::paginate(2);
+
+    // // sortiert nach created_at (standard)
+    // $articles = App\Article::latest()->get();
+
+    // // return $article;
+
+    // return view('about', [
+    //     'articles' => $articles
+    // ]);
+
+    // oder etwas kürzer:
+    return view('about', [
+        'articles' => App\Article::take(3)->latest()->get()
+    ]);
 });
 
 Route::get('/posts/{post}', 'PostsController@show');

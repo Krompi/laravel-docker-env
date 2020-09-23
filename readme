@@ -70,3 +70,36 @@ Die Config befindet sich in der Datei webpack.mix.js.
     npm run watch
 
 mehr Infos: https://laravel.com/docs/7.x/mix
+
+### Episode 18 - Render Dynamic Data
+Es wird zuerst eine Model-File erzeugt, inklusiver einer Migrations-Datei
+
+    sudo docker exec lara-tutorial_app_1 php artisan make:model Article -m
+
+Nachdem man das Migrations-Skript angepaßt hat kann die Migration durchgeführt werden
+
+    sudo docker exec lara-tutorial_app_1 php artisan migrate
+
+Mit Tinker kann man jetzt Daten hinzufügen
+
+    sudo docker exec -it lara-tutorial_app_1 bash
+    php artisan tinker
+    Psy Shell v0.10.4 (PHP 7.4.7 — cli) by Justin Hileman
+    >>> $article = new App\Article;
+    => App\Article {#3047}
+    >>> $article->title = 'neuer Titel';
+    => "neuer Titel"
+    >>> $article->excerpt = 'Hier kommt ein kurzer Einleitungstext';
+    => "Hier kommt ein kurzer Einleitungstext"
+    >>> $article->body = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren';
+    => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren"
+    >>> $article
+    => App\Article {#3047
+        title: "neuer Titel",
+        excerpt: "Hier kommt ein kurzer Einleitungstext",
+        body: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren",
+    }
+    >>> $article->save();
+    => true
+
+Alternativ kann man es natürlich mit adminer machen....
