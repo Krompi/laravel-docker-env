@@ -112,3 +112,21 @@ Um die Artikel anzuzeigen wird in der Routers ein neuer Controller aufgerufen un
 
 Die Ausgabe erfolgt in einer neuen Blade-Datei.
 
+### Episode 21 - The Seven Restful Controller Actions
+
+Einen Controller erstellen mit den sieben Standardfunktionen: index, create, store, show, edit, update, destroy
+
+    sudo docker exec lara-tutorial_app_1 php artisan make:controller ProjectsController -r
+
+### Episode 22 - Restful Routing
+
+Die sieben Standardfunktionen werden über die Art des REST-Aufrufes gesteuert. Standard ist hier GET, es gibt aber noch POST, PUT, DELETE und einige andere.
+Action  | Beschreibung                  | REST    | Beispiel
+------  | ------                        | ------  | ------
+index   | zeigt die Übersicht           | GET     | GET  /articles  
+create  | zeigt die Bearbeitungsmaske   | GET     | GET  /articles/create
+store   | speichert einen neuen Eintrag | POST    | POST /articles  
+show    | zeigt die Detailansicht       | GET     | GET  /articles/:id  
+edit    | zeigt die Bearbeitungsmaske   | GET     | GET  /articles/:id/edit
+update  | speichert eine Änderung       | PUT     | PUT  /articles/:id  
+destroy | löscht einen Eintrag          | DELETE  | DELETE /articles/:id
