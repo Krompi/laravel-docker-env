@@ -130,3 +130,7 @@ show    | zeigt die Detailansicht       | GET     | GET  /articles/:id
 edit    | zeigt die Bearbeitungsmaske   | GET     | GET  /articles/:id/edit
 update  | speichert eine Änderung       | PUT     | PUT  /articles/:id  
 destroy | löscht einen Eintrag          | DELETE  | DELETE /articles/:id
+
+### Episode 23 - Form Handling
+
+Aufbau eines Formulars um einen neuen Artikel zu erstellen.
