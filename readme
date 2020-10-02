@@ -134,3 +134,11 @@ destroy | löscht einen Eintrag          | DELETE  | DELETE /articles/:id
 ### Episode 23 - Form Handling
 
 Aufbau eines Formulars um einen neuen Artikel zu erstellen.
+Es wird die create- und store-Methode benötigt. Erstere zeigt eine View mit dem Formular an, die zweite speichert die Daten.
+Im Formular wird mit @csrf ein Input-Feld mit einem eindeutigen Token erzeugt. Dieser wird ausgewertet um Cross-site request forgery zu verhindern (https://en.wikipedia.org/wiki/Cross-site_request_forgery)
+
+### Episode 24 - Forms that Submit PUT Requests
+
+Bearbeiten eines Artikels:
+Es wird die edit- und update-Methode benötigt. Erstere zeigt eine View mit dem Formular an, die zweite speichert die Daten.
+Gespeichert wird das normalerweise mit einem PUT-Request. Das können aber die wenigsten Browser. Deshalb wird mit @method('PUT') ein hidden-Input erzeugt, dass die Request-Methode festlegt.
